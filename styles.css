@@ -1,0 +1,38 @@
+body{
+    color: #444655;
+}
+
+.container-div{
+    margin: 10px;
+}
+
+#leave-count{
+    color: #007BFF;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.main-label{
+    font-weight: bolder;
+}
+
+.radio-label{
+    margin-left: 10px;
+}
+
+.requiredField{
+    color: red;
+}
+
+#leaveType-div, #dayType-div, #leaveFrom-div, #leaveTo-div, #reason-div{
+    margin: 50px 0 0 50px;
+    white-space: nowrap;
+}
+
+#leaveType-div input, #dayType-div input{
+    margin-left: 40px;
+}
