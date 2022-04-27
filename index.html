@@ -5,49 +5,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Leave Form</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+	    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body>
+    <body onload="setDateMin()">
         <div class="container-div">
             <h1>Apply for Leave</h1>
-            <p>You have <span id="leave-count">XX</span> leave available</p>
-            <form action="" method="POST">
+            <p>You have <span id="leave-count">2</span> leave available</p>
+            <form action="insert.php" method="POST" id="leave-form">
+                <!-- error message div -->
+                <div id="errMessage-div"></div>
                 <div class="grid-container">
                     <!-- leave type -->
                     <div id="leaveType-div">
                         <label class="main-label" for="leave_type">Type of Leave Request <span class="requiredField">*</span></label><br>
-                        <input type="radio" value="sick" name="leave"><label for="sick_leave" class="radio-label">Sick Leave</label>
-                        <input type="radio" value="vacation" name="leave"><label for="vacation_leave" class="radio-label">Vacation Leave</label>
+                        <input type="radio" value="sick" name="leave" required><label for="sick_leave" class="radio-label">Sick Leave</label>
+                        <input type="radio" value="vacation" name="leave" required><label for="vacation_leave" class="radio-label">Vacation Leave</label>
                     </div>
                     <!-- day type -->
                     <div id="dayType-div">
                         <label class="main-label"  for="day_type">Day Type<span class="requiredField">*</span></label><br>
-                        <input type="radio" value="full" name="day"><label for="full_day" class="radio-label">Full Day</label>
-                        <input type="radio" value="first" name="day"><label for="first_half" class="radio-label">First Half</label>
-                        <input type="radio" value="second" name="day"><label for="second_half" class="radio-label">Second Half</label>
+                        <input type="radio" value="full" name="day" onchange="setDayType()" required><label for="full_day" class="radio-label">Full Day</label>
+                        <input type="radio" value="first" name="day" onchange="setDayType()" required><label for="first_half" class="radio-label">First Half</label>
+                        <input type="radio" value="second" name="day" onchange="setDayType()" required><label for="second_half" class="radio-label">Second Half</label>
                     </div>
                 </div>
                 <!-- leave date -->
                 <div class="grid-container">
                     <div id="leaveFrom-div">
                         <label class="main-label" for="leave_from">Leave From <span class="requiredField">*</span></label><br>
-                        <input type="date" class="form-control" name="leaveFrom">
+                        <input type="date" class="form-control" id="leaveFrom-input"  name="leaveFrom" onchange="setLeaveTo()" required>
                     </div>
                     <div id="leaveTo-div">
                         <label class="main-label" for="leave_to">Leave To <span class="requiredField">*</span></label><br>
-                        <input type="date" class="form-control" name="leaveTo">
+                        <input type="date" class="form-control" id="leaveTo-input" name="leaveTo" onchange="setLeaveFrom()" required>
                     </div>
                 </div>
                 <!-- leave reason -->
                 <div id="reason-div">
                     <label class="main-label" for="reason">Reason (Optional)</label><br>
-                    <textarea name="reason" class="form-control" cols="30" rows="10"></textarea>
+                    <textarea name="reason" class="form-control" cols="30" rows="10" name="reason"></textarea>
+                </div>
+                <div id="btn-div">
+                    <button class="form-control" id="submit-btn">Apply Leave</button>
+                    <button class="form-control" id="cancel-btn">Cancel</button>
                 </div>
             </form>
         </div>
-        
+        <script src="form.js"></script>
 	    <script src="https://kit.fontawesome.com/5d2c1f1d69.js" crossorigin="anonymous"></script>
-	    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>

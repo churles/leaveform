@@ -10,6 +10,11 @@ body{
     color: #007BFF;
 }
 
+#errMessage-div{
+    color: red;
+    font-weight: bold;
+}
+
 .grid-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -28,11 +33,23 @@ body{
     color: red;
 }
 
-#leaveType-div, #dayType-div, #leaveFrom-div, #leaveTo-div, #reason-div{
-    margin: 50px 0 0 50px;
+#leaveType-div, #dayType-div, #leaveFrom-div, #leaveTo-div, #reason-div, #submit-btn, #cancel-btn{
+    margin: 50px 50px 0 50px;
     white-space: nowrap;
 }
 
 #leaveType-div input, #dayType-div input{
     margin-left: 40px;
+}
+
+#btn-div{
+    display: grid;
+    grid-template-columns: 210px 210px;
+}
+
+#submit-btn{
+    background-color: #007BFF;
+    color: white;
+    width: 200px;
+    font-weight: bold;
 }
